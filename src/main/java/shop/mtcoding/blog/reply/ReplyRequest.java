@@ -1,4 +1,4 @@
-package shop.mtcoding.blog.controller.reply;
+package shop.mtcoding.blog.reply;
 
 public class ReplyRequest {
 }

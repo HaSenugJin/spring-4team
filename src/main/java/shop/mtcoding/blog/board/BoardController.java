@@ -1,18 +1,19 @@
-package shop.mtcoding.blog.controller.board;
+package shop.mtcoding.blog.board;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 @RequiredArgsConstructor
 @Controller
 public class BoardController {
 
-    private final BoardService boardService ;
+    private final BoardService boardService;
     private final HttpSession session;
 
-    @GetMapping({ "/"})
+    @GetMapping({"/"})
     public String index() {
         return "index";
     }
@@ -28,5 +29,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/{boardId}/update-form")
-    public String updateForm(@PathVariable Integer boardId){return "board/update-form";}
+    public String updateForm(@PathVariable Integer boardId) {
+        return "board/update-form";
+    }
 }

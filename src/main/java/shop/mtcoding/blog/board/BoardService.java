@@ -1,4 +1,4 @@
-package shop.mtcoding.blog.controller.board;
+package shop.mtcoding.blog.board;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardService {
 
-    private final BoardJPARepository boardJPARepository ;
+    private final BoardJPARepository boardJPARepository;
 }
