@@ -16,9 +16,9 @@ import java.sql.Timestamp;
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id ;
-    private String title ;
-    private String content ;
+    private Integer id;
+    private String title;
+    private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
@@ -31,8 +31,8 @@ public class Board {
 //    private List<Reply> replies = new ArrayList<>();
 
 
-//    @Transient
-//    private boolean isBoardOwner ;
+    @Transient
+    private boolean isBoardOwner;
 
 
     @Builder
