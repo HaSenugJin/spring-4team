@@ -65,4 +65,16 @@ public class BoardService {
 
         return board;
     }
+
+    @Transactional
+    public void delete(Integer id, User sessionUser) {
+        Board board = boardJPARepository.findById(id)
+                .orElseThrow(() -> new Exception404("게시글을 찾을 수 없습니다."));
+
+        if(sessionUser.getId() != board.getUser().getId()) {
+            throw new Exception403("게시글을 삭제할 권한이 없습니다.");
+        }
+
+        boardJPARepository.deleteById(id);
+    }
 }
