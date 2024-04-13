@@ -24,7 +24,8 @@ public class BoardController {
     }
 
     @GetMapping("/board/{boardId}")
-    public String detail(@PathVariable Integer boardId) {  // int 를 쓰면 값이 없으면 0, Integer 를 넣으면 값이 없을 때 null 값이 들어옴.
+    // int 를 쓰면 값이 없으면 0, Integer 를 넣으면 값이 없을 때 null 값이 들어옴.
+    public String detail(@PathVariable Integer boardId) {
         return "board/detail";
     }
 
