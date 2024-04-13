@@ -51,6 +51,7 @@
                     </div>
                     {{#isReplyOwner}}
                     <form action="/reply/{{id}}/delete" method="post">
+                        <input type="hidden" name="boardId" value="{{boardId}}">
                         <button class="btn">🗑</button>
                     </form>
                     {{/isReplyOwner}}

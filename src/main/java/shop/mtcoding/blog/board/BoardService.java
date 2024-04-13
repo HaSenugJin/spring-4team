@@ -31,7 +31,6 @@ public class BoardService {
                 .orElseThrow(() -> new Exception404("게시글을 찾을 수 없습니다."));
 
         List<Reply> replyList = replyJPARepository.findByBoardIdJoinUser(boardId);
-
         return BoardResponse.DetailDTO.builder()
                 .board(board)
                 .user(sessionUser)

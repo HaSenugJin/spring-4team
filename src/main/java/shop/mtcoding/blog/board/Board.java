@@ -1,5 +1,6 @@
 package shop.mtcoding.blog.board;
 
+
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;

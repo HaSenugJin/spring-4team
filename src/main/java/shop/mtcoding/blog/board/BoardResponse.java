@@ -38,6 +38,7 @@ public class BoardResponse {
             private Integer id;
             private String content;
             private Integer userId;
+            private Integer boardId;
             private String username;
             private boolean isReplyOwner;
 
@@ -46,6 +47,7 @@ public class BoardResponse {
                 this.content = reply.getComment();
                 this.userId = reply.getUser().getId();
                 this.username = reply.getUser().getUsername();
+                this.boardId = reply.getBoard().getId();
                 this.isReplyOwner = false;
                 if (user != null) {
                     if (user.getId() == userId) isReplyOwner = true;

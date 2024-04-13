@@ -37,7 +37,6 @@ public class BoardController {
         User sessionUser = (User) session.getAttribute("sessionUser");
         BoardResponse.DetailDTO board = boardService.findByBoardAndUser(id, sessionUser);
         request.setAttribute("board", board);
-
         return "board/detail";
     }
 
