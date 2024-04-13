@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import shop.mtcoding.blog.user.User;
 
 import java.util.List;
@@ -39,8 +40,26 @@ public class BoardController {
         return "board/detail";
     }
 
-    @GetMapping("/board/{boardId}/update-form")
-    public String updateForm(@PathVariable Integer boardId) {
+    @GetMapping("/board/{id}/update-form")
+    public String updateForm(@PathVariable Integer id, HttpServletRequest request) {
+        Board board = boardService.updateForm(id);
+        request.setAttribute("board", board);
         return "board/update-form";
+    }
+
+    @PostMapping("/board/save")
+    public String save(BoardRequest.SaveDTO reqDTO) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        boardService.save(reqDTO, sessionUser);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/board/{id}/update")
+    public String update(@PathVariable Integer id, BoardRequest.UpdateDTO reqDTO) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        boardService.update(id, reqDTO, sessionUser);
+
+        return "redirect:/board/" + id;
     }
 }
