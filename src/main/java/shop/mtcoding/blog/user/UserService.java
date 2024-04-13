@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.mtcoding.blog._core.errors.exception.Exception400;
 import shop.mtcoding.blog._core.errors.exception.Exception401;
+import shop.mtcoding.blog._core.errors.exception.Exception404;
 
 import java.util.Optional;
 
@@ -33,5 +34,21 @@ public class UserService {
 
         User sessionUser = userJPARepository.save(reqDTO.toEntity());
         return sessionUser;
+    }
+
+    public User updateForm(Integer sessionUserId) {
+        return userJPARepository.findById(sessionUserId)
+                .orElseThrow(() -> new Exception404("회원정보를 찾을 수 없습니다."));
+    }
+
+    @Transactional
+    public User update(Integer sessionUserId, UserRequest.UpdateDTO reqDTO) {
+        User user = userJPARepository.findById(sessionUserId).orElseThrow(()
+                -> new Exception404("회원정보를 찾을 수 없습니다."));
+        user.setPassword(reqDTO.getPassword());
+        user.setEmail(reqDTO.getEmail());
+        userJPARepository.save(user);
+
+        return user;
     }
 }
